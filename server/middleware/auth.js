@@ -11,6 +11,7 @@ function authenticateJWTAdmin(req, res, next) {
 
   if (authHeader) {
     const token = authHeader.split(" ")[1];
+
     jwt.verify(token, ADMINSECRET, (err, admin) => {
       if (err) return res.sendStatus(403);
 
@@ -27,6 +28,7 @@ function authenticateJWTUser(req, res, next) {
 
   if (authHeader) {
     const token = authHeader.split(" ")[1];
+
     jwt.verify(token, USERSECRET, (err, user) => {
       if (err) return res.sendStatus(403);
 

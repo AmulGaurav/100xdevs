@@ -1,5 +1,4 @@
 const express = require("express");
-// eslint-disable-next-line no-undef
 const { User, Course } = require("../db");
 const {
   USERSECRET,
@@ -26,7 +25,7 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   // logic to log in user
-  const { username, password } = req.headers;
+  const { username, password } = req.body;
   const user = await User.findOne({ username, password });
 
   if (user) {
@@ -73,3 +72,5 @@ router.get("/purchasedCourses", authenticateJWTUser, async (req, res) => {
     res.status(404).json({ message: "User does not exist" });
   }
 });
+
+module.exports = router;

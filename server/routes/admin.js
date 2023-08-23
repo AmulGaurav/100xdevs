@@ -25,7 +25,7 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   // logic to log in admin
-  const { username, password } = req.headers;
+  const { username, password } = req.body;
   const admin = await Admin.findOne({ username, password });
 
   if (admin) {
@@ -36,11 +36,15 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/me", authenticateJWTAdmin, (req, res) => {
+  res.json({ username: req.admin.username });
+});
+
 router.post("/courses", authenticateJWTAdmin, async (req, res) => {
   // logic to create a course
   const newCourse = new Course(req.body);
   await newCourse.save();
-  res.json({ message: "Course created successfully", courseId: newCourse.id });
+  res.json({ message: "Course created successfully", id: newCourse.id });
 });
 
 router.put("/courses/:courseId", authenticateJWTAdmin, async (req, res) => {
@@ -53,8 +57,30 @@ router.put("/courses/:courseId", authenticateJWTAdmin, async (req, res) => {
   }
 });
 
+router.delete("/courses/:courseId", authenticateJWTAdmin, async (req, res) => {
+  // logic to delete a course
+  try {
+    await Course.findByIdAndDelete(req.params.courseId);
+    res.json({ message: "Course deleted successfully" });
+  } catch {
+    res.status(404).json({ message: "Course does not exist." });
+  }
+});
+
+router.get("/courses/:courseId", authenticateJWTAdmin, async (req, res) => {
+  // logic to get a course
+  try {
+    const course = await Course.findById(req.params.courseId);
+    res.json({ course });
+  } catch {
+    res.status(404).json({ message: "Course does not exist." });
+  }
+});
+
 router.get("/courses", authenticateJWTAdmin, async (req, res) => {
   // logic to get all courses
   const courses = await Course.find({});
   res.json({ courses });
 });
+
+module.exports = router;
