@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 function App() {
+  // const username = useRecoilValue(usernameSelector);
   const setUser = useSetRecoilState(userAtom);
 
   const init = async () => {
@@ -60,7 +61,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/addcourse" element={<AddCourse />} />
           <Route path="/courses" element={<Courses />} />
-          <Route path="/course/:courseId" element={<Course />} />
+          <Route path="/courses/:courseId" element={<Course />} />
         </Routes>
       </Router>
     </div>

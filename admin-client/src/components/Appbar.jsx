@@ -6,13 +6,23 @@ import {
   usernameSelector,
   isUserLoadingSelector,
 } from "../store/selectors/user";
+import { CircularProgress } from "@mui/material";
 
 function Appbar() {
   const isLoading = useRecoilValue(isUserLoadingSelector);
   const navigate = useNavigate();
 
   if (isLoading) {
-    return <>Loading...</>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <CircularProgress />
+      </div>
+    );
   }
 
   return (

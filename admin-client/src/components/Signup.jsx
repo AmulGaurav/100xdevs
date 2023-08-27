@@ -147,7 +147,7 @@ function SignUpButton() {
           });
           const data = response.data;
           localStorage.setItem("token", data.token);
-          alert("User created successfully");
+          alert(data.message);
           window.location.href = "/";
         }}
       >

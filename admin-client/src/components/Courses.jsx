@@ -1,6 +1,5 @@
 import { BASE_URL } from "../config";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Card, Typography, Button } from "@mui/material";
 import axios from "axios";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -9,6 +8,7 @@ import {
   isCoursesLoadingSelector,
   coursesSelector,
 } from "../store/selectors/courses";
+import Loading from "./Loading";
 
 function Courses() {
   const setCourses = useSetRecoilState(coursesAtom);
@@ -31,7 +31,11 @@ function Courses() {
   }, []);
 
   if (isLoading) {
-    return <>Loading...</>;
+    return (
+      <>
+        <Loading />
+      </>
+    );
   }
 
   return (
@@ -53,8 +57,6 @@ function Courses() {
 }
 
 function CourseCard({ course }) {
-  const navigate = useNavigate();
-
   return (
     <Card
       style={{
@@ -65,7 +67,7 @@ function CourseCard({ course }) {
         cursor: "pointer",
       }}
       onClick={() => {
-        navigate("/course/" + course._id);
+        window.location.href = "/courses/" + course._id;
       }}
     >
       <img
@@ -94,7 +96,7 @@ function CourseCard({ course }) {
           size="small"
           color="success"
           onClick={() => {
-            navigate("/course/" + course._id);
+            window.location.href = "/courses/" + course._id;
           }}
         >
           View

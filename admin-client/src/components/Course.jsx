@@ -15,6 +15,7 @@ import {
   isCoursePublished,
   courseId,
 } from "../store/selectors/course";
+import Loading from "./Loading";
 
 function Course() {
   const { courseId } = useParams();
@@ -40,7 +41,11 @@ function Course() {
   }, [isUpdating]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <Loading />
+      </>
+    );
   }
 
   return (
