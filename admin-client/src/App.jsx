@@ -6,13 +6,14 @@ import AddCourse from "./components/AddCourse";
 import Courses from "./components/Courses";
 import Landing from "./components/Landing";
 import Course from "./components/Course";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { userAtom } from "./store/atoms/user";
 import { useEffect } from "react";
 import axios from "axios";
+import { usernameSelector } from "./store/selectors/user";
 
 function App() {
-  // const username = useRecoilValue(usernameSelector);
+  const username = useRecoilValue(usernameSelector);
   const setUser = useSetRecoilState(userAtom);
 
   const init = async () => {
@@ -59,9 +60,13 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
-          <Route path="/addcourse" element={<AddCourse />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/courses/:courseId" element={<Course />} />
+          {username && (
+            <>
+              <Route path="/addcourse" element={<AddCourse />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/courses/:courseId" element={<Course />} />
+            </>
+          )}
         </Routes>
       </Router>
     </div>
