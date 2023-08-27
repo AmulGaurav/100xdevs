@@ -36,10 +36,28 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/me", authenticateJWTUser, (req, res) => {
+  res.json({ username: req.user.username });
+});
+
 router.get("/courses", authenticateJWTUser, async (req, res) => {
   // logic to list all courses
   const courses = await Course.find({ published: true });
   res.json({ courses });
+});
+
+router.get("/courses/:courseId", authenticateJWTUser, async (req, res) => {
+  // logic to get a course
+  const course = await Course.findOne({
+    _id: req.params.courseId,
+    published: true,
+  });
+
+  if (course) {
+    res.json({ course });
+  } else {
+    res.status(404).json({ message: "Course does not exist." });
+  }
 });
 
 router.post("/courses/:courseId", authenticateJWTUser, async (req, res) => {
@@ -47,13 +65,18 @@ router.post("/courses/:courseId", authenticateJWTUser, async (req, res) => {
   try {
     const course = await Course.findById(req.params.courseId);
     const user = await User.findOne({ username: req.user.username });
+    const existingCourse = user.purchasedCourses.find((c) => {
+      return c.toString() === String(course._id);
+    });
 
-    if (user) {
+    if (!existingCourse) {
       user.purchasedCourses.push(course);
       await user.save();
       res.json({ message: "Course purchased successfully" });
     } else {
-      res.status(404).json({ message: "User does not exist" });
+      res
+        .status(404)
+        .json({ message: "You have already purchased this course" });
     }
   } catch {
     res.status(404).json({ message: "Course not exists" });

@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/admin", adminRouter);
-app.use("/users", userRouter);
+app.use("/user", userRouter);
 
 mongoose.connect(
   "mongodb+srv://amulgaurav907:Bkm3vxaN80ucI0p3@cluster0.f2yryxv.mongodb.net/courses",
