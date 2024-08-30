@@ -1,4 +1,4 @@
-# Course Selling Platform
+# CourseMania
 
 A full-stack course selling website with role-based access and secure authentication. Admins can create, read, update, and delete courses, while users can purchase and access the courses they've acquired.
 
@@ -22,11 +22,11 @@ To set up the project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/course-selling-platform.git
+   git clone https://github.com/AmulGaurav/CourseMania
    ```
 2. Navigate to the project directory:
    ```bash
-   cd course-selling-platform
+   cd CourseMania
    ```
 3. Install dependencies:
    ```bash
