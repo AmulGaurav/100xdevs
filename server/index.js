@@ -13,7 +13,7 @@ app.use("/admin", adminRouter);
 app.use("/user", userRouter);
 
 mongoose.connect(
-  "mongodb+srv://amulgaurav907:Bkm3vxaN80ucI0p3@cluster0.f2yryxv.mongodb.net/courses",
+  "mongodb+srv://amulgaurav907:mongodb@cluster0.z5sqcu3.mongodb.net/courses",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

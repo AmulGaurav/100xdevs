@@ -52,6 +52,7 @@ function App() {
         height: "100vh",
         backgroundColor: "#eeeeee",
         overflowY: "auto",
+        padding: "8px",
       }}
     >
       <Router>
