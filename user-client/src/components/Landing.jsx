@@ -14,7 +14,7 @@ function Landing() {
             marginTop: "100px",
           }}
         >
-          <Typography variant="h2">Coursera User</Typography>
+          <Typography variant="h2">CourseMania User</Typography>
           <Typography variant="h5">A place to learn, earn & grow</Typography>
         </div>
       </Grid>

@@ -48,7 +48,7 @@ function Appbar() {
           }}
           variant="h6"
         >
-          Coursera
+          CourseMania
         </Typography>
       </div>
 
@@ -120,6 +120,18 @@ function UserMenu() {
         </div>
       ) : (
         <div>
+          <Button
+            sx={{
+              mr: 5,
+            }}
+            color="secondary"
+            variant="contained"
+            onClick={() => {
+              window.open("http://localhost:5173/");
+            }}
+          >
+            Admin DashBoard
+          </Button>
           <Button
             variant="contained"
             onClick={() => {

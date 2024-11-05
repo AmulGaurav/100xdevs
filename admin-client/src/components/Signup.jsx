@@ -39,7 +39,9 @@ function Signup() {
           marginBottom: "20px",
         }}
       >
-        <Typography variant="h6">Welcome to Coursera, sign up below</Typography>
+        <Typography variant="h6">
+          Welcome to CourseMania, sign up below
+        </Typography>
       </div>
       <Card
         variant="outlined"
