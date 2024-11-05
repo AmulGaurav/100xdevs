@@ -127,7 +127,7 @@ function UserMenu() {
             color="secondary"
             variant="contained"
             onClick={() => {
-              window.open("http://localhost:5173/");
+              window.open("https://course-mania-five.vercel.app/");
             }}
           >
             Admin DashBoard

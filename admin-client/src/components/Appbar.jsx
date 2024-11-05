@@ -127,7 +127,7 @@ function UserMenu() {
             color="secondary"
             variant="contained"
             onClick={() => {
-              window.open("http://localhost:5174/");
+              window.open("https://course-mania-15fb.vercel.app/");
             }}
           >
             Student DashBoard
