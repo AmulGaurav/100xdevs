@@ -12,13 +12,11 @@ app.use(express.json());
 app.use("/admin", adminRouter);
 app.use("/user", userRouter);
 
-mongoose.connect(
-  "mongodb+srv://amulgaurav907:mongodb@cluster0.z5sqcu3.mongodb.net/courses",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
+  dbName: "courses",
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 app.listen(3000, () => {
   console.log("Server is listening on port 3000");
