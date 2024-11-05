@@ -11,6 +11,7 @@ import { userAtom } from "./store/atoms/user";
 import { useEffect } from "react";
 import axios from "axios";
 import { usernameSelector } from "./store/selectors/user";
+import { BASE_URL } from "./config";
 
 function App() {
   const setUser = useSetRecoilState(userAtom);
@@ -18,7 +19,7 @@ function App() {
 
   const init = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/user/me", {
+      const response = await axios.get(BASE_URL + "/user/me", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
