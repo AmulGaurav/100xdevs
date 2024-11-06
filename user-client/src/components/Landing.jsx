@@ -1,4 +1,5 @@
 import { Grid, Typography } from "@mui/material";
+import dashboardImage from "../assets/dashboard.jpg";
 
 function Landing() {
   return (
@@ -22,9 +23,10 @@ function Landing() {
         <img
           style={{
             marginTop: "20px",
+            borderRadius: "10px",
           }}
           width={"100%"}
-          src="https://www.commonsense.org/sites/default/files/styles/ratio_16_9_large/public/png/2019-12/teachers-essential-guide-to-coding-in-the-classroom-6_1.png?itok=EIpQbo1O"
+          src={dashboardImage}
           alt=""
         />
       </Grid>
